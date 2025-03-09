@@ -474,7 +474,7 @@
     </section>
 
     <footer>
-        &copy; 2025 Startup Name. All rights reserved.
+        &copy; 2025 Hungrezy. All rights reserved.
     </footer>
 
     <script>
@@ -494,10 +494,22 @@
     formData.append("linkedin", document.getElementById("linkedin").value);
     formData.append("resume", document.getElementById("resume").files[0]);
 
-    await new Promise(resolve => setTimeout(resolve, 2000)); // Simulating network delay
+    const response = await fetch("/send-email", {
+                method: "POST",
+                body: formData,
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                window.location.href = result.redirectUrl;
+            } else {
+                alert(result.message);
+            }
+       
+    //await new Promise(resolve => setTimeout(resolve, 2000)); // Simulating network delay
 
     // Redirect to thankyou.html after submission
-    window.location.href = "thank-you.html";
+    //window.location.href = "thank-you.html";
 });
 
     </script>
