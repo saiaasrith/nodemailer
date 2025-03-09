@@ -27,3 +27,4 @@ function showApplicationForm(jobTitle) {
     document.getElementById("applicationForm").style.display = "block";
     document.getElementById("jobTitle").textContent = jobTitle;
 }
+
